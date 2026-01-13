@@ -133,3 +133,4 @@ function showMessage(text, type) {
         </div>
     `);
 }
+

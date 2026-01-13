@@ -101,3 +101,4 @@ function getTipoTransaccion(tipo) {
       return "Movimiento";
   }
 }
+
