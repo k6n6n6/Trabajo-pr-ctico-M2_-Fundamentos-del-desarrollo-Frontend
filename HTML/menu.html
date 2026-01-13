@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alke Wallet | Menu</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+      .dashboard-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .user-welcome {
+        background: linear-gradient(135deg, var(--primary), #c2185b);
+        color: white;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: var(--box-shadow);
+      }
+
+      .balance-card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+        box-shadow: var(--box-shadow);
+        border-top: 5px solid var(--primary);
+      }
+
+      .balance-amount {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 10px 0;
+        font-family: "Courier New", monospace;
+      }
+
+      .balance-label {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .quick-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .action-card {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid rgba(214, 51, 132, 0.1);
+      }
+
+      .action-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--box-shadow-hover);
+        border-color: var(--primary);
+      }
+
+      .action-icon {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .action-title {
+        font-weight: 600;
+      }
+
+      .action-desc {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      .recent-transactions {
+        background: var(--bg-card);
+        border-radius: var(--border-radius);
+        padding: 20px;
+      }
+
+      .logout-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--alert);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        box-shadow: var(--box-shadow);
+      }
+
+      .user-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="dashboard-container">
+      <div class="user-welcome text-center">
+        <div class="user-avatar" id="menuAvatar"></div>
+        <h1 class="h4 mb-2">¡Bienvenido!</h1>
+        <p class="mb-0 opacity-75" id="userName"></p>
+      </div>
+
+      <div class="balance-card">
+        <div class="balance-label">
+          <i class="fa-solid fa-skull-crossbones me-2"></i>Saldo Disponible
+        </div>
+        <div class="balance-amount" id="saldo">$6,666,666</div>
+      </div>
+
+      <div class="quick-actions">
+        <div class="action-card" id="btnDepositar">
+          <div class="action-icon"><i class="fas fa-money-bill-wave"></i></div>
+          <div class="action-title">Depositar</div>
+          <div class="action-desc">Agregar fondos</div>
+        </div>
+
+        <div class="action-card" id="btnEnviar">
+          <div class="action-icon"><i class="fas fa-paper-plane"></i></div>
+          <div class="action-title">Transferir</div>
+          <div class="action-desc">A terceros</div>
+        </div>
+
+        <div class="action-card" id="btnMovimientos">
+          <div class="action-icon"><i class="fas fa-history"></i></div>
+          <div class="action-title">Movimientos</div>
+          <div class="action-desc">Historial de movimientos</div>
+        </div>
+
+        <div class="action-card" id="btnInversiones">
+          <div class="action-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="action-title">Inversiones</div>
+          <div class="action-desc">Próximamente</div>
+        </div>
+      </div>
+
+      <div class="recent-transactions">
+        <h5><i class="fas fa-clock me-2"></i>Actividad Reciente</h5>
+        <div id="recentTransactions" class="text-muted text-center py-3">
+          Cargando...
+        </div>
+      </div>
+
+      <div
+        id="mensaje"
+        class="alert alert-info mt-3"
+        style="display: none"
+      ></div>
+    </div>
+
+    <footer class="footer-banner">
+      <div class="footer-content">
+        <p class="mb-0">
+          <i class="fas fa-heart text-primary me-1"></i>
+          Alke Wallet - Proyecto Modulo 2
+        </p>
+
+        <p class="small satanic-minimal mt-1">
+          <span class="goat">🐐</span>
+          <span class="text">©2026 • Powered by knn.Labs • 666</span>
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/menu.js"></script>
+  </body>
+</html>
