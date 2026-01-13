@@ -2,9 +2,6 @@ $(document).ready(function () {
 
   console.log("Index.js cargado correctamente");
 
-  /* =====================================================
-     ANIMACIÓN DE ENTRADA
-     ===================================================== */
   $(".card")
     .css({
       opacity: 0,
@@ -20,9 +17,6 @@ $(document).ready(function () {
       }
     );
 
-  /* =====================================================
-     EFECTO HOVER BOTÓN (CONSISTENTE CON LOGIN)
-     ===================================================== */
   $(".btn-primary").hover(
     function () {
       $(this).css({
@@ -38,9 +32,6 @@ $(document).ready(function () {
     }
   );
 
-  /* =====================================================
-     FEEDBACK AL HACER CLICK EN ACCEDER
-     ===================================================== */
   $(".btn-primary").on("click", function (e) {
 
     e.preventDefault();
